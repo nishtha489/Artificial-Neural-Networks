@@ -9,7 +9,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    environment: Copilot
+    environment: copilot
     steps:
       - name: Azure login
         uses: Azure/login@v2.3.0
