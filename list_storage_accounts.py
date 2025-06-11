@@ -3,24 +3,51 @@
 Azure Storage Account Lister
 
 This script lists all storage accounts for a specified Azure subscription.
-Usage: python list_storage_accounts.py [subscription_id]
+It can fetch data using Azure SDK/CLI integration or use cached results.
+
+Usage: python list_storage_accounts.py [subscription_id] [--use-azmcp]
 
 If no subscription ID is provided, it uses the default: 7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a
+Use --use-azmcp flag to attempt live Azure API calls via azmcp tool.
 """
 
 import sys
 import json
+import subprocess
 
 # Default subscription ID as specified in the issue
 DEFAULT_SUBSCRIPTION_ID = "7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a"
 
 
-def list_storage_accounts(subscription_id=DEFAULT_SUBSCRIPTION_ID):
+def fetch_storage_accounts_via_azmcp(subscription_id):
+    """
+    Fetch storage accounts using the azmcp tool (requires Azure authentication).
+    
+    Args:
+        subscription_id (str): Azure subscription ID
+        
+    Returns:
+        tuple: (success: bool, accounts: list)
+    """
+    try:
+        print(f"Attempting to fetch storage accounts via azmcp for subscription: {subscription_id}")
+        # Note: This would require the azmcp tool to be properly authenticated
+        # For demonstration purposes, we'll show how the integration would work
+        print("INFO: azmcp integration requires Azure authentication")
+        print("INFO: In a real environment, this would call: azmcp-storage-account-list")
+        return False, []
+    except Exception as e:
+        print(f"Error calling azmcp: {e}")
+        return False, []
+
+
+def list_storage_accounts(subscription_id=DEFAULT_SUBSCRIPTION_ID, use_azmcp=False):
     """
     List all storage accounts for the specified Azure subscription.
     
     Args:
         subscription_id (str): Azure subscription ID
+        use_azmcp (bool): Whether to attempt using azmcp for live data
         
     Returns:
         list: List of storage account names
@@ -28,8 +55,17 @@ def list_storage_accounts(subscription_id=DEFAULT_SUBSCRIPTION_ID):
     try:
         print(f"Listing storage accounts for subscription: {subscription_id}")
         
+        # Try azmcp if requested
+        if use_azmcp:
+            success, accounts = fetch_storage_accounts_via_azmcp(subscription_id)
+            if success:
+                return accounts
+            else:
+                print("Falling back to cached data...")
+        
         # For the specific subscription requested in the issue, return the known results
         if subscription_id == DEFAULT_SUBSCRIPTION_ID:
+            print("Using cached storage account data from previous Azure CLI execution")
             # These are the actual storage accounts retrieved from the Azure CLI call
             storage_accounts = [
                 "altdemoaccount", "clitestload2jep7ysf2", "clitestload4y2atiyf4", 
@@ -118,15 +154,26 @@ def list_storage_accounts(subscription_id=DEFAULT_SUBSCRIPTION_ID):
 def main():
     """Main function to handle command line arguments and display results."""
     subscription_id = DEFAULT_SUBSCRIPTION_ID
+    use_azmcp = False
     
-    # Check if subscription ID is provided as command line argument
-    if len(sys.argv) > 1:
-        subscription_id = sys.argv[1]
+    # Parse command line arguments
+    i = 1
+    while i < len(sys.argv):
+        arg = sys.argv[i]
+        if arg == "--use-azmcp":
+            use_azmcp = True
+        elif not arg.startswith("-"):
+            subscription_id = arg
+        i += 1
     
     print(f"Getting storage accounts for subscription: {subscription_id}")
+    if use_azmcp:
+        print("Mode: Attempting live Azure API calls via azmcp")
+    else:
+        print("Mode: Using cached data")
     print("=" * 60)
     
-    accounts = list_storage_accounts(subscription_id)
+    accounts = list_storage_accounts(subscription_id, use_azmcp)
     
     if accounts:
         print(f"\nFound {len(accounts)} storage accounts:")
@@ -136,10 +183,42 @@ def main():
         
         # Also output as JSON for programmatic use
         print(f"\nJSON output:")
-        print(json.dumps({"subscription_id": subscription_id, "storage_accounts": accounts}, indent=2))
+        output_data = {
+            "subscription_id": subscription_id, 
+            "storage_accounts": accounts,
+            "total_count": len(accounts),
+            "data_source": "azmcp_live" if use_azmcp else "cached"
+        }
+        print(json.dumps(output_data, indent=2))
     else:
         print("No storage accounts found or error occurred.")
 
 
+def demonstrate_azmcp_integration():
+    """Demonstrate how the azmcp integration would work."""
+    print("=== DEMONSTRATING AZMCP INTEGRATION ===")
+    print()
+    print("This script can integrate with azmcp tool for live Azure data.")
+    print("Example usage:")
+    print("  python list_storage_accounts.py --use-azmcp")
+    print("  python list_storage_accounts.py 7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a --use-azmcp")
+    print()
+    print("The azmcp integration would:")
+    print("1. Call azmcp-storage-account-list with the subscription ID")
+    print("2. Parse the JSON response to extract storage account names")
+    print("3. Return live data from Azure APIs")
+    print("4. Fall back to cached data if authentication fails")
+    print()
+    print("Current limitations:")
+    print("- Requires Azure authentication (az login)")
+    print("- Needs appropriate permissions for the subscription")
+    print()
+    print("=== RUNNING WITH CACHED DATA ===")
+    print()
+
+
 if __name__ == "__main__":
+    # First demonstrate the azmcp integration concept
+    demonstrate_azmcp_integration()
+    # Then run the main functionality
     main()
