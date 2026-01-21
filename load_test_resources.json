@@ -2,7 +2,7 @@
   "query_metadata": {
     "subscription_id": "7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a",
     "subscription_name": "Cloud-Native-Testing-IDC-Test",
-    "query_timestamp": "2026-01-21T09:35:11.257155Z",
+    "query_timestamp": "2026-01-21T09:38:26.557300Z",
     "query_type": "Azure Load Testing Resources"
   },
   "methodology": {
@@ -68,7 +68,7 @@
       ]
     },
     "resource_graph": {
-      "query": "resources\n| where type == \"microsoft.loadtestservice/loadtests\"\n| where subscriptionId == \"7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a\"\n| project name, resourceGroup, location, properties"
+      "query": "resources | where type == \"microsoft.loadtestservice/loadtests\" | where subscriptionId == \"7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a\" | project name, resourceGroup, location, properties"
     }
   },
   "results": {

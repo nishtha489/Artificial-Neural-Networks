@@ -94,10 +94,7 @@ def main():
                 ]
             },
             "resource_graph": {
-                "query": f"""resources
-| where type == "microsoft.loadtestservice/loadtests"
-| where subscriptionId == "{subscription_id}"
-| project name, resourceGroup, location, properties"""
+                "query": f"""resources | where type == "microsoft.loadtestservice/loadtests" | where subscriptionId == "{subscription_id}" | project name, resourceGroup, location, properties"""
             }
         },
         "results": {

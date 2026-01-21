@@ -103,10 +103,7 @@ Get-AzResource -ResourceType "Microsoft.LoadTestService/loadTests"
 ### Method 5: Using Azure Resource Graph
 
 ```kusto
-resources
-| where type == "microsoft.loadtestservice/loadtests"
-| where subscriptionId == "7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a"
-| project name, resourceGroup, location, properties
+resources | where type == "microsoft.loadtestservice/loadtests" | where subscriptionId == "7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a" | project name, resourceGroup, location, properties
 ```
 
 ## Azure MCP Loadtesting Commands Reference
