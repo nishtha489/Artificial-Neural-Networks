@@ -1,0 +1,78 @@
+{
+  "query_metadata": {
+    "subscription_id": "7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a",
+    "subscription_name": "Cloud-Native-Testing-IDC-Test",
+    "query_timestamp": "2026-01-21T09:35:11.257155Z",
+    "query_type": "Azure Load Testing Resources"
+  },
+  "methodology": {
+    "tool_used": "Azure MCP - loadtesting",
+    "approach": "Resource group iteration",
+    "total_resource_groups": 883,
+    "note": "Azure Load Testing resources are queried per resource group"
+  },
+  "azure_mcp_commands": {
+    "list_resources": {
+      "command": "loadtesting_testresource_list",
+      "required_params": [
+        "subscription",
+        "resource-group"
+      ],
+      "description": "Lists all Azure Load Testing resources in a resource group"
+    },
+    "get_test": {
+      "command": "loadtesting_test_get",
+      "required_params": [
+        "subscription",
+        "resource-group",
+        "test-resource-name",
+        "test-id"
+      ],
+      "description": "Get configuration for a specific load test"
+    },
+    "list_test_runs": {
+      "command": "loadtesting_testrun_list",
+      "required_params": [
+        "subscription",
+        "resource-group",
+        "test-resource-name",
+        "test-id"
+      ],
+      "description": "List all test runs for a specific test"
+    }
+  },
+  "sample_resource_groups": [
+    "test-cri_group",
+    "mohi-test_group",
+    "mohit-test_group",
+    "cnt-integration-tests-switzerlandnorth-src-rg",
+    "cnt-integration-tests-switzerlandnorth-dest-rg",
+    "smoke-tests-switzerlandnorth-rg",
+    "cnt-test-comknaraya-sea-rg"
+  ],
+  "alternative_query_methods": {
+    "azure_cli": {
+      "setup": "az extension add --name load",
+      "command": "az load list --subscription 7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a"
+    },
+    "azure_powershell": {
+      "setup": "Set-AzContext -SubscriptionId '7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a'",
+      "command": "Get-AzResource -ResourceType 'Microsoft.LoadTestService/loadTests'"
+    },
+    "azure_portal": {
+      "url": "https://portal.azure.com",
+      "steps": [
+        "Navigate to 'All resources'",
+        "Filter by Subscription: 7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a",
+        "Filter by Resource type: Microsoft.LoadTestService/loadTests"
+      ]
+    },
+    "resource_graph": {
+      "query": "resources\n| where type == \"microsoft.loadtestservice/loadtests\"\n| where subscriptionId == \"7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a\"\n| project name, resourceGroup, location, properties"
+    }
+  },
+  "results": {
+    "status": "Query framework established",
+    "note": "To get actual results, use the Azure MCP tool with specific resource group names or use alternative methods listed above"
+  }
+}
