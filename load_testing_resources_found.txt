@@ -1,0 +1,67 @@
+Resource Groups Checked:
+========================
+
+Resource Group: FeatureAvailabilityDeployment-centralindia-1
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=FeatureAvailabilityDeployment-centralindia-1
+
+Resource Group: MC_cnt-test-commitsha-cin-rg_cnt-test-commitsha-cin-aks-cp_centralindia
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=MC_cnt-test-commitsha-cin-rg_cnt-test-commitsha-cin-aks-cp_centralindia
+
+Resource Group: MC_cnt-test-commitsha-cin-rg_cnt-test-commitsha-cin-aks_centralindia
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=MC_cnt-test-commitsha-cin-rg_cnt-test-commitsha-cin-aks_centralindia
+
+Resource Group: test-cri_group
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=test-cri_group
+
+Resource Group: mohi-test_group
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=mohi-test_group
+
+Resource Group: mohit-test_group
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=mohit-test_group
+
+Resource Group: cnt-integration-tests-switzerlandnorth-src-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-integration-tests-switzerlandnorth-src-rg
+
+Resource Group: cnt-integration-tests-switzerlandnorth-dest-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-integration-tests-switzerlandnorth-dest-rg
+
+Resource Group: smoke-tests-switzerlandnorth-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=smoke-tests-switzerlandnorth-rg
+
+Resource Group: cnt-test-comknaraya-sea-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-comknaraya-sea-rg
+
+Resource Group: cnt-test-gblknaraya-Outbound-ip-pool-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-gblknaraya-Outbound-ip-pool-rg
+
+Resource Group: cnt-test-gblknaraya-Inbound-ip-pool-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-gblknaraya-Inbound-ip-pool-rg
+
+Resource Group: cnt-gblknaraya-ai-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-gblknaraya-ai-rg
+
+Resource Group: cnt-test-gblharshan-cin-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-gblharshan-cin-rg
+
+Resource Group: cnt-test-gblharshan-Inbound-ip-pool-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-gblharshan-Inbound-ip-pool-rg
+
+Resource Group: cnt-test-gblharshan-Outbound-ip-pool-rg
+  - Querying Azure MCP loadtesting_testresource_list...
+  - Command: Azure-loadtesting with subscription=7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a, resource-group=cnt-test-gblharshan-Outbound-ip-pool-rg
+
