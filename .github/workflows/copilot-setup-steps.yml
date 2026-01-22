@@ -18,5 +18,12 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           allow-no-subscriptions: true
           allow-federated-credential: true
-          enable-AzPSSession: true 
-          
+          enable-AzPSSession: true
+
+      - name: Get load tests for subscription
+        run: |
+          SUB_ID="7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a"
+          echo "Fetching load tests for subscription: $SUB_ID"
+          az load test list --subscription "$SUB_ID" \
+            --output table || \
+            echo "No load tests found or error accessing subscription"
