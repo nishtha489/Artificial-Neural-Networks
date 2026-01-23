@@ -24,7 +24,7 @@ This repository contains assignments, tutorials, and implementations related to 
 
 ### Prerequisites
 
-- Python 3.7+
+- Python 3.8+
 - PyTorch
 - Jupyter Notebook
 
