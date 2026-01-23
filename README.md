@@ -19,6 +19,12 @@ This repository contains assignments, tutorials, and implementations related to 
 ## Development Tools
 
 - **[MCP_SERVERS.md](MCP_SERVERS.md)**: Documentation about Model Context Protocol (MCP) servers available in the development environment
+- **mcp_info.py**: Interactive tool to list and explore available MCP servers
+  ```bash
+  python mcp_info.py --list     # List all MCP servers
+  python mcp_info.py --help     # Show usage help
+  python mcp_info.py            # Show all information
+  ```
 
 ## Getting Started
 
