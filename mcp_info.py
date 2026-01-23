@@ -7,7 +7,7 @@ Model Context Protocol (MCP) servers in the development environment.
 """
 
 import sys
-import os
+from pathlib import Path
 
 # ANSI color codes for better readability
 BLUE = '\033[94m'
@@ -109,10 +109,9 @@ def show_documentation_path():
     print_header("Documentation")
     
     doc_file = "MCP_SERVERS.md"
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    doc_path = os.path.join(current_dir, doc_file)
+    doc_path = Path(__file__).parent / doc_file
     
-    if os.path.exists(doc_path):
+    if doc_path.exists():
         print(f"📖 {BOLD}Comprehensive documentation available at:{END}")
         print(f"   {GREEN}{doc_path}{END}")
         print(f"\n💡 {YELLOW}View with:{END}")
@@ -128,13 +127,15 @@ def show_quick_help():
     print_header("Quick Usage Examples")
     
     examples = [
-        ("Search for code", "Use GitHub MCP: github-mcp-server-search_code"),
-        ("Run tests", "Use Bash MCP: bash command='pytest tests/'"),
-        ("Edit files", "Use File System MCP: edit path='file.py' old_str='...' new_str='...'"),
-        ("Browse web", "Use Browser MCP: playwright-browser_navigate url='...'"),
-        ("Review code", "Use Code Quality MCP: code_review"),
-        ("Web research", "Use Web Access MCP: web_search query='...'"),
+        ("Search for code", "GitHub MCP tools (see MCP_SERVERS.md for full list)"),
+        ("Run tests", "Bash MCP: Execute pytest, npm test, etc."),
+        ("Edit files", "File System MCP: Read, create, and edit operations"),
+        ("Browse web", "Browser MCP: Navigate, screenshot, interact with pages"),
+        ("Review code", "Code Quality MCP: Automated reviews and security scans"),
+        ("Web research", "Web Access MCP: Search and fetch current information"),
     ]
+    
+    print(f"  {YELLOW}Note: See MCP_SERVERS.md for detailed tool names and parameters{END}\n")
     
     for task, method in examples:
         print(f"  {BOLD}{task}:{END}")
