@@ -35,22 +35,27 @@ def list_load_tests(subscription_id):
     load_tests = []
     print(f"Fetching load tests for subscription: {subscription_id}\n")
     
-    try:
-        # List all load testing resources across all resource groups
-        for load_test in client.load_tests.list_by_subscription():
-            load_tests.append(load_test)
-            print(f"Load Test Found:")
-            print(f"  Name: {load_test.name}")
-            print(f"  ID: {load_test.id}")
-            print(f"  Location: {load_test.location}")
-            print(f"  Resource Group: {load_test.id.split('/')[4]}")
-            if hasattr(load_test, 'provisioning_state'):
-                print(f"  Provisioning State: {load_test.provisioning_state}")
-            print()
+    # List all load testing resources across all resource groups
+    for load_test in client.load_tests.list_by_subscription():
+        load_tests.append(load_test)
+        print(f"Load Test Found:")
+        print(f"  Name: {load_test.name}")
+        print(f"  ID: {load_test.id}")
+        print(f"  Location: {load_test.location}")
+        
+        # Extract resource group from Azure resource ID
+        # Format: /subscriptions/{sub}/resourceGroups/{rg}/providers/{provider}/{type}/{name}
+        try:
+            id_parts = load_test.id.split('/')
+            rg_index = id_parts.index('resourceGroups') + 1
+            if rg_index < len(id_parts):
+                print(f"  Resource Group: {id_parts[rg_index]}")
+        except (ValueError, IndexError):
+            print(f"  Resource Group: Unable to parse")
             
-    except Exception as e:
-        print(f"Error listing load tests: {e}", file=sys.stderr)
-        raise
+        if hasattr(load_test, 'provisioning_state'):
+            print(f"  Provisioning State: {load_test.provisioning_state}")
+        print()
     
     return load_tests
 
