@@ -1,0 +1,37 @@
+name: List Azure Load Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      subscription_id:
+        description: 'Azure Subscription ID'
+        required: false
+        default: '7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  list-load-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    environment: copilot
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Azure login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ github.event.inputs.subscription_id }}
+          enable-AzPSSession: true
+      
+      - name: List Load Tests
+        run: |
+          echo "Listing load tests for subscription: ${{ github.event.inputs.subscription_id }}"
+          python3 list_load_tests.py --subscription-id "${{ github.event.inputs.subscription_id }}"
