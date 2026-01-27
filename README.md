@@ -31,3 +31,19 @@ Or use the GitHub Actions workflow "List Azure Load Tests" from the Actions tab.
 ## MCP Servers
 
 This repository development environment has access to several MCP (Model Context Protocol) servers that provide automation capabilities. See [MCP_SERVERS.md](MCP_SERVERS.md) for complete documentation on available servers and their capabilities.
+
+### Quick Start
+
+To list all available MCP servers:
+
+```bash
+python3 list_mcp_servers.py
+```
+
+To get detailed information about a specific server:
+
+```bash
+python3 list_mcp_servers.py --server github
+```
+
+Or use `python3 list_mcp_servers.py --help` for more options.

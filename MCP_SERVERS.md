@@ -4,6 +4,27 @@
 
 This document describes the Model Context Protocol (MCP) servers available in this GitHub Copilot environment. MCP is a protocol that allows AI assistants to interact with external tools, data sources, and services.
 
+## Quick Start
+
+You can list available MCP servers using the command-line tool:
+
+```bash
+# List all available MCP servers
+python3 list_mcp_servers.py
+
+# Show detailed information about a specific server
+python3 list_mcp_servers.py --server github
+
+# List servers by category
+python3 list_mcp_servers.py --category system
+
+# List all available categories
+python3 list_mcp_servers.py --categories
+
+# Output in JSON format
+python3 list_mcp_servers.py --json
+```
+
 ## Available MCP Servers
 
 ### 1. GitHub MCP Server
