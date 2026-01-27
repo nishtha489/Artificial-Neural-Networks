@@ -10,6 +10,8 @@ import json
 import sys
 import argparse
 
+__version__ = "1.0.0"
+
 
 def run_azure_cli_command(command):
     """
@@ -90,6 +92,12 @@ def main():
     """Main function to parse arguments and list load tests."""
     parser = argparse.ArgumentParser(
         description="List Azure Load Tests for a subscription"
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
+        help="Show program version and exit"
     )
     parser.add_argument(
         "--subscription-id",

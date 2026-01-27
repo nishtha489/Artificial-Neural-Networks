@@ -19,6 +19,9 @@ The `list_load_tests.py` script allows you to retrieve a list of Azure Load Test
 Run the script directly from the command line:
 
 ```bash
+# Show version information
+python3 list_load_tests.py --version
+
 # List load tests for the default subscription ID (7c71b563-0dc0-4bc0-bcf6-06f8f0516c7a)
 python3 list_load_tests.py
 
